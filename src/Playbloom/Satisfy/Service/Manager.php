@@ -192,7 +192,7 @@ class Manager
         return $this->configuration;
     }
 
-    public function acquireLock(): Lock
+    public function acquireLock()
     {
         if (!$this->lock->acquire()) {
             throw new IOException('Cannot acquire lock for satis configuration file');
