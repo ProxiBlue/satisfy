@@ -1,0 +1,84 @@
+{
+    "name": "playbloom/satisfy",
+    "license": "MIT",
+    "type": "project",
+    "keywords": ["satis", "composer", "backend", "ui"],
+    "description": "Satis composer repository manager with a Web UI",
+    "authors": [
+        {
+            "name": "Ludovic Fleury",
+            "email": "ludo.fleury@gmail.com"
+        },
+        {
+            "name": "Julius Beckmann",
+            "email": "satisfy@h4cc.de"
+        },
+        {
+            "name": "Ramūnas Dronga",
+            "email": "ieskok@ramuno.lt"
+        }
+    ],
+    "support": {
+        "email": "ludo.fleury@gmail.com"
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^7.0",
+        "composer/satis": "dev-master",
+        "composer/composer": "^1.6",
+        "jms/serializer-bundle": "^2.3",
+        "symfony/asset": "^3.4",
+        "symfony/form": "^3.4",
+        "symfony/lock": "^3.4",
+        "symfony/validator": "^3.4",
+        "symfony/framework-bundle": "^3.4",
+        "symfony/security-bundle": "^3.4",
+        "symfony/templating": "^3.4",
+        "symfony/twig-bundle": "^3.4",
+        "symfony/yaml": "^3.4",
+        "doctrine/annotations": "~1.4.0",
+        "doctrine/instantiator": "1.0.5",
+        "incenteev/composer-parameter-handler": "^2.1"
+    },
+    "require-dev": {
+        "symfony/browser-kit": "^3.4",
+        "mikey179/vfsStream": "^1.6",
+        "phpunit/phpunit": "^6.3",
+        "phpstan/phpstan": "^0.9",
+        "ramunasd/symfony-container-mocks": "^0.6.0",
+        "friendsofphp/php-cs-fixer": "^2.13"
+    },
+    "autoload": {
+        "psr-4": { "Playbloom\\Satisfy\\": "src/Playbloom/Satisfy" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Tests\\Playbloom\\Satisfy\\": "tests/Playbloom/Satisfy" }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
+        ],
+        "post-update-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
+        ],
+        "test": [
+            "@phpstan",
+            "@phpunit",
+            "@php-cs-fixer"
+        ],
+        "phpunit": "phpunit",
+        "phpstan": "phpstan analyse --level 4 src",
+        "php-cs-fixer": "php-cs-fixer fix --diff --show-progress=dots"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        },
+        "incenteev-parameters": {
+            "file": "app/config/parameters.yml"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}
